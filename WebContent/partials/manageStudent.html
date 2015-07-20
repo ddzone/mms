@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="sms">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+
+<!-- custom js -->
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<!-- <h4 align="center">Add a new Student</h4> -->
+		<br /> <br />
+		<form class="form-horizontal" role="form">
+			<div ng-controller="studentCtrl">
+
+				<div class="container">
+					<br />
+					<br />
+
+					<form class="form-horizontal" role="form">
+						<div ng-controller="studentCtrl">
+
+							<div class="container">
+								<div class="form-group">
+								<input class="form-control" placeholder="search..." ng-model="searchText">
+								</div>
+								<br />
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Firstname</th>
+											<th>Lastname</th>
+											<th>Email</th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="info"
+											ng-repeat="std in studentList | filter:searchText">
+											<td>{{ std.firstName }}</td>
+											<td>{{ std.lastName}}</td>
+											<td>{{ std.email}}</td>
+											<td><button type="submit" ng-click="editStudent(std)"
+												value="Edit" class="btn btn-primary">View | Edit</button></td>
+											<td><button type="submit" ng-click="deleteStudent(std)"
+													value="Edit" class="btn btn-primary">Delete</button></td>
+										</tr>
+
+									</tbody>
+								</table>
+								<br />
+								
+								<div>
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="firstName">First
+										Name:</label>
+									<div class="col-sm-10">
+										<input type="text" ng-model="student.firstName"
+											class="form-control" placeholder="Enter first name">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="lastName">Last
+										Name:</label>
+									<div class="col-sm-10">
+										<input type="text" ng-model="student.lastName"
+											class="form-control" placeholder="Enter last name">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="email">Email:</label>
+									<div class="col-sm-10">
+										<input type="text" ng-model="student.email"
+											class="form-control" placeholder="Enter email">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="submit" ng-click="addStudent(student)" 
+											value="Save" class="btn btn-primary">Save</button>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
+
